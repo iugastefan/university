@@ -1,0 +1,42 @@
+body {
+    background: #002b36;
+    color: #839496;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    color: #839496;
+}
+
+header img {
+    width: 35%;
+    height: auto;
+}
+
+table,
+td,
+th {
+    border: solid 2px;
+    border-collapse: collapse;
+}
+
+a {
+    color: #b58900;
+}
+
+td:nth-of-type(2n),
+th {
+    background: #073642;
+    color: #93a1a1;
+}
+
+section#Competente\ digitale {
+    font-size: 30px;
+}
+
+.a {
+    font-size: 0.8em;
+}
