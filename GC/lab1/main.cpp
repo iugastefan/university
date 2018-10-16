@@ -70,7 +70,6 @@ void ex_b(const punct &p1, const punct &p2, const punct &p3) {
     }
     if (diferite(p2, p3) == false) {
       cout << "A2 = 1*A3 + 0*A1" << endl;
-      ;
       return;
     }
     if (diferite(p1, p3) == false) {
