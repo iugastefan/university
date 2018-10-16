@@ -113,7 +113,8 @@ def test_puncte_necoliniare():
     ex_b(p1, p2, p3)
 
 
-test_puncte_identice()
-test_2_puncte_identice()
-test_puncte_coliniare()
-test_puncte_necoliniare()
+if __name__ == "__main__":
+    test_puncte_identice()
+    test_2_puncte_identice()
+    test_puncte_coliniare()
+    test_puncte_necoliniare()
