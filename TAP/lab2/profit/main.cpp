@@ -15,9 +15,25 @@ int main() {
          }
          return a.profit > b.profit;
        });
-  for (auto x : activitati)
-    cout << x.profit << " " << x.termen << endl;
   unordered_map<int, activitate> orar;
+  unordered_map<int, int> pozitie;
+  int sum = 0;
   for (auto x : activitati) {
+    if (orar[x.termen].ordine != 0) {
+      if (pozitie[x.termen] != 0) {
+        if (pozitie[x.termen] == 1)
+          continue;
+        pozitie[x.termen]--;
+        orar[pozitie[x.termen]] = x;
+        sum += x.profit;
+        continue;
+      }
+    }
+    pozitie[x.termen] = x.termen;
+    orar[x.termen] = x;
+    sum += x.profit;
   }
+  cout << sum << endl;
+  for (auto x : orar)
+    cout << x.second.ordine << " ";
 }
