@@ -8,7 +8,7 @@ struct activitate {
 };
 int main() {
   vector<activitate> activitati{
-      {100, 2, 1}, {19, 1, 2}, {27, 2, 3}, {25, 1, 4}, {15, 3, 5}};
+      {100, 4, 1}, {199, 1, 2}, {27, 2, 3}, {25, 2, 4}, {150, 4, 5}};
   sort(activitati.begin(), activitati.end(),
        [](const activitate &a, const activitate &b) {
          if (a.termen == b.termen) {
@@ -27,10 +27,17 @@ int main() {
         orar.push_back(x);
         sum += x.profit;
       } else {
-        orar.push_back(x);
-        sum += x.profit;
-        sum -= orar.front().profit;
-        orar.pop_front();
+        if (x.profit > orar.front().profit) {
+          orar.push_back(x);
+          sum += x.profit;
+          sum -= orar.front().profit;
+          orar.pop_front();
+        } else {
+          sum -= orar.back().profit;
+          orar.pop_back();
+          orar.push_back(x);
+          sum += x.profit;
+        }
       }
     }
   }
