@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-#include <unordered_map>
+#include <list>
 #include <vector>
 using namespace std;
 struct activitate {
@@ -11,34 +11,30 @@ int main() {
       {100, 2, 1}, {19, 1, 2}, {27, 2, 3}, {25, 1, 4}, {15, 3, 5}};
   sort(activitati.begin(), activitati.end(),
        [](const activitate &a, const activitate &b) {
-         if (a.profit == b.profit) {
-           return a.termen > b.termen;
+         if (a.termen == b.termen) {
+           return a.profit < b.profit;
          }
-         return a.profit > b.profit;
+         return a.termen < b.termen;
        });
-  unordered_map<int, activitate> orar;
-  unordered_map<int, int> pozitie;
   int sum = 0;
-  // for (auto x : activitati)
-  //   cout << x.profit << " " << x.termen << endl;
+  list<activitate> orar;
   for (auto x : activitati) {
-    if (orar[x.termen].ordine != 0) {
-      if (pozitie[x.termen] != 0) {
-        if (pozitie[x.termen] == 1)
-          continue;
-        pozitie[x.termen]--;
-        orar[pozitie[x.termen]] = x;
-        cout << x.profit << " " << pozitie[x.termen] << endl;
-        sum += x.profit;
-      }
-    } else {
-      pozitie[x.termen] = x.termen;
-      orar[x.termen] = x;
-      cout << x.profit << " " << pozitie[x.termen] << endl;
+    if (orar.empty()) {
+      orar.push_back(x);
       sum += x.profit;
+    } else {
+      if (orar.back().termen < x.termen) {
+        orar.push_back(x);
+        sum += x.profit;
+      } else {
+        orar.push_back(x);
+        sum += x.profit;
+        sum -= orar.front().profit;
+        orar.pop_front();
+      }
     }
   }
   cout << sum << endl;
   for (auto x : orar)
-    cout << x.second.profit << " " << x.second.termen << endl;
+    cout << x.ordine << " ";
 }
