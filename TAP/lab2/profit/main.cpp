@@ -35,7 +35,7 @@ int main() {
       sum += x.profit;
     } else {
       if (orar.back().termen < x.termen) {
-        orar.push_back(x);
+        orar.push_back(activitate{x.profit,orar.back().termen+1,x.ordine});
         auto ptr = orar.end();
         ptr--;
         mini.push(minim{x.profit, ptr});
