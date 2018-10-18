@@ -14,8 +14,9 @@ struct minim {
 };
 
 int main() {
-  vector<activitate> activitati{
-      {100, 4, 1}, {199, 1, 2}, {27, 2, 3}, {25, 2, 4}, {150, 4, 5}};
+  vector<activitate> activitati{{100, 4, 1}, {199, 1, 2}, {27, 2, 3},
+                                {25, 2, 4},  {150, 4, 5}, {205, 4, 6},
+                                {200, 4, 7}};
   sort(activitati.begin(), activitati.end(),
        [](const activitate &a, const activitate &b) {
          if (a.termen == b.termen) {
@@ -35,7 +36,7 @@ int main() {
       sum += x.profit;
     } else {
       if (orar.back().termen < x.termen) {
-        orar.push_back(activitate{x.profit,orar.back().termen+1,x.ordine});
+        orar.push_back(activitate{x.profit, orar.back().termen + 1, x.ordine});
         auto ptr = orar.end();
         ptr--;
         mini.push(minim{x.profit, ptr});
