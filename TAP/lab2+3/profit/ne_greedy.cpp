@@ -14,9 +14,8 @@ struct minim {
 };
 
 int main() {
-  vector<activitate> activitati{{100, 4, 1}, {199, 1, 2}, {27, 2, 3},
-                                {25, 2, 4},  {150, 4, 5}, {205, 4, 6},
-                                {200, 4, 7}};
+  vector<activitate> activitati{{7, 4, 1}, {9, 6, 2},  {10, 4, 3},
+                                {9, 1, 4}, {11, 4, 5}, {7, 6, 6}};
   sort(activitati.begin(), activitati.end(),
        [](const activitate &a, const activitate &b) {
          if (a.termen == b.termen) {
@@ -56,9 +55,4 @@ int main() {
   cout << sum << endl;
   for (auto x : orar)
     cout << x.ordine << " ";
-  cout << endl;
-  while (!mini.empty()) {
-    cout << mini.top().val << " ";
-    mini.pop();
-  }
 }
