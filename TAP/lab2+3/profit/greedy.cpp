@@ -21,7 +21,8 @@ int main() {
          }
          return a.termen > b.termen;
        });
-  for(auto x:activitati)cout<<x.ordine<<" ";
+  for (auto x : activitati)
+    cout << x.ordine << " ";
   map<int, vector<activitate>> map_activ;
   int loc = activitati.front().termen;
   vector<activitate> orar(loc);
