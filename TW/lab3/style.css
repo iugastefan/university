@@ -1,0 +1,54 @@
+body {
+    background: white;
+    color: black;
+}
+
+figure {
+    padding: 4px;
+    border: solid black;
+    width: 25%;
+    display: inline-block;
+}
+
+img {
+    width: 100%;
+}
+
+figure:hover {
+    border: solid green 5px;
+}
+
+figcaption {
+    border: solid red;
+}
+
+li ul {
+    visibility: hidden;
+}
+
+nav>ul>li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+select,
+optgroup,
+option {
+    background: white;
+    color: black;
+}
+
+li:hover ul {
+    visibility: visible;
+    border: solid black;
+}
+
+@media screen and (max-width: 900px) {
+    figure{
+        width: 90%;
+    }
+    nav>ul>li {
+        display: block;
+    }
+
+}
