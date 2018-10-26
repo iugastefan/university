@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -7,7 +8,7 @@ using namespace std;
 struct activitate {
   int profit, termen, ordine;
   bool operator()(const activitate &a, const activitate &b) {
-    return a.profit > b.profit;
+    return a.profit < b.profit;
   }
 };
 
@@ -21,30 +22,28 @@ int main() {
          }
          return a.termen > b.termen;
        });
-  for (auto x : activitati)
-    cout << x.ordine << " ";
   map<int, vector<activitate>> map_activ;
   int loc = activitati.front().termen;
-  vector<activitate> orar(loc);
+  array<activitate, 6> orar;
   for (auto x : activitati) {
     map_activ[x.termen].push_back(x);
   }
-  // for (auto x : map_activ) {
-  //   cout << endl << x.first << ": ";
-  //   for (auto y : x.second)
-  //     cout << y.ordine << " ";
-  // }
   priority_queue<activitate, vector<activitate>, activitate> max_activ;
   int sum = 0;
-  for (auto x = map_activ.rbegin(); x != map_activ.rend(); x++) {
-    for (auto y : x->second)
-      max_activ.push(y);
+  auto it = map_activ.rbegin();
+  while (loc) {
+    if (it != map_activ.rend() && it->second.back().termen >= loc) {
+      for (auto x : it->second)
+        max_activ.push(x);
+      it++;
+    }
     loc--;
     orar[loc] = max_activ.top();
-    sum += max_activ.top().profit;
+    sum += orar[loc].profit;
     max_activ.pop();
   }
-  cout << sum << endl;
-  for (auto x : orar)
+  cout << endl;
+  for (auto x : orar) {
     cout << x.ordine << " ";
+  }
 }
