@@ -1,3 +1,4 @@
+// Problema 7(metoda ne-greedy)
 #include <algorithm>
 #include <iostream>
 #include <list>
