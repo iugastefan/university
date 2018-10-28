@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     pid_t pid = fork();
     if (pid < 0)
       return EXIT_FAILURE;
-    if (pid == 0) {
+    else if (pid == 0) {
       long number = strtol(argv[i], NULL, 10);
       if (errno != 0) {
         perror("Error");
@@ -44,5 +44,9 @@ int main(int argc, char **argv) {
       return EXIT_SUCCESS;
     }
   }
+  for (i = 0; i < argc; i++) {
+    wait(NULL);
+  }
+  printf("\nDone Parent %d Me %d \n", getppid(), getpid());
   return EXIT_SUCCESS;
 }
