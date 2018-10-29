@@ -9,7 +9,7 @@ int main(void) {
     return pid;
   else if (pid == 0) {
     printf("My PID=%d, Child PID=%d\n", getppid(), getpid());
-    char *argv[] = {"ls", ".", NULL};
+    char *argv[] = {"/bin/ls", ".", NULL};
     execve("/bin/ls", argv, NULL);
   } else {
     wait(NULL);
