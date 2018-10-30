@@ -6,8 +6,7 @@ import (
 )
 
 type point struct {
-	x int
-	y int
+	x, y int
 }
 
 func ccw(p1, p2, p3 point) bool {
@@ -23,7 +22,7 @@ func (p points) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
 }
 func (p points) Less(i, j int) bool {
-	return ccw(p[0],p[j],p[i])
+	return ccw(p[0], p[j], p[i])
 }
 func (p *points) min() {
 	pmin := point{999, 999}
@@ -43,24 +42,46 @@ func (p *points) min() {
 	}
 	(*p)[0], (*p)[min] = (*p)[min], (*p)[0]
 }
-func graham(puncte points) points {
+func graham(puncte points) (points, points) {
 	puncte.min()
 	sort.Sort(points(puncte))
 	stack := make(points, 0)
+	stack2 := make(points, 0)
 	stack = append(stack, puncte[0])
 	stack = append(stack, puncte[1])
 	stack = append(stack, puncte[2])
 	for i := 3; i < len(puncte); i++ {
 		for ccw(stack[len(stack)-2], stack[len(stack)-1], puncte[i]) {
+			stack2 = append(stack2, stack[len(stack)-1])
 			stack = stack[:len(stack)-1]
 		}
 		stack = append(stack, puncte[i])
 	}
-	return stack
+	return stack, stack2
+}
+func problema(puncte points) {
+	stack, stack2 := graham(puncte)
+	if len(stack) == 4 {
+		fmt.Println(stack)
+		fmt.Printf("I: %v, %v\n", stack[0], stack[2])
+		fmt.Printf("J: %v, %v\n", stack[1], stack[3])
+	} else if len(stack) == 3 {
+		fmt.Printf("I: %v\n", stack)
+		fmt.Printf("J: %v\n", stack2)
+	}
 }
 func main() {
-	puncte := points{{-8, 0}, {-6, -2}, {-4, 0}, {-4, -2}, {-3, 2}, {-2, 2}, {0, -1},
-		{2, -4}, {4, -2}, {6, 2}, {8, 8}, {10, 0}}
-	stack := graham(puncte)
-	fmt.Println(stack)
+
+	fmt.Println("Patrulater")
+	patrulater := points{{0, 0}, {3, 1}, {2, 3}, {1, 2}}
+	problema(patrulater)
+
+	fmt.Println("Triunghi")
+	triunghi := points{{0, 0}, {1, 1}, {1, 3}, {3, 0}}
+	problema(triunghi)
+
+	fmt.Println("Coliniare")
+	coliniare := points{{4, 0}, {1, 0}, {2, 0}, {3, 0}}
+	problema(coliniare)
+
 }
