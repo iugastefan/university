@@ -22,6 +22,9 @@ func (p points) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
 }
 func (p points) Less(i, j int) bool {
+	if p[0].y == p[i].y && p[0].y == p[j].y {
+		return p[i].x < p[j].x
+	}
 	return ccw(p[0], p[j], p[i])
 }
 func (p *points) min() {
@@ -62,7 +65,6 @@ func graham(puncte points) (points, points) {
 func problema(puncte points) {
 	stack, stack2 := graham(puncte)
 	if len(stack) == 4 {
-		fmt.Println(stack)
 		fmt.Printf("I: %v, %v\n", stack[0], stack[2])
 		fmt.Printf("J: %v, %v\n", stack[1], stack[3])
 	} else if len(stack) == 3 {
@@ -77,7 +79,7 @@ func main() {
 	problema(patrulater)
 
 	fmt.Println("Triunghi")
-	triunghi := points{{0, 0}, {1, 1}, {1, 3}, {3, 0}}
+	triunghi := points{{0, 0}, {1, 1}, {1, 2}, {3, 0}}
 	problema(triunghi)
 
 	fmt.Println("Coliniare")
