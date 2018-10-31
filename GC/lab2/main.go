@@ -83,7 +83,9 @@ func main() {
 	problema(triunghi)
 
 	fmt.Println("Coliniare")
-	coliniare := points{{4, 0}, {1, 0}, {2, 0}, {3, 0}}
+	coliniare := points{{2, 0}, {1, 0}, {3, 0}, {4, 0}}
 	problema(coliniare)
 
+	punctes := points{{0, 0}, {3, 0}, {0, 3}, {1, 1}}
+	problema(punctes)
 }
