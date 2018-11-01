@@ -47,7 +47,7 @@ func (p *points) min() {
 }
 func graham(puncte points) (points, points) {
 	puncte.min()
-	sort.Sort(points(puncte))
+	sort.Sort(puncte)
 	stack := make(points, 0)
 	stack2 := make(points, 0)
 	stack = append(stack, puncte[0])
@@ -88,4 +88,5 @@ func main() {
 
 	punctes := points{{0, 0}, {3, 0}, {0, 3}, {1, 1}}
 	problema(punctes)
+
 }
