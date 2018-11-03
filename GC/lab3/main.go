@@ -34,7 +34,7 @@ func probl1(d1, d2 equation) (punct, error) {
 	x := (-d1.c*d2.b + d2.c*d1.b) / delta(d1, d2)
 	y := (d1.a*(-d2.c) + d2.a*d1.c) / delta(d1, d2)
 	p := punct{x, y}
-	if verif(p, d1) && verif(p, d1) {
+	if verif(p, d1) && verif(p, d2) {
 		return p, nil
 	}
 	return p, errors.New("punctul nu se verifica")
@@ -43,10 +43,7 @@ func dist(p1, p2 punct) int {
 	return (p1.x - p2.x) ^ 2 + (p1.y - p2.y) ^ 2
 }
 func between(p punct, d segment) bool {
-	if dist(d.x, p)+dist(p, d.y) == dist(d.x, d.y) {
-		return true
-	}
-	return false
+	return dist(d.x, p)+dist(p, d.y) == dist(d.x, d.y)
 }
 func probl2a(p1, p2, p3, p4 punct) (segment, error) {
 	if between(p1, segment{p3, p4}) && between(p2, segment{p3, p4}) {
