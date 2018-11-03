@@ -24,5 +24,6 @@ int main(int argc, char **argv) {
     return errno;
   }
   printf("%s", rword);
+  free(rword);
   return 0;
 }
