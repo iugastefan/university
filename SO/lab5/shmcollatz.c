@@ -74,5 +74,7 @@ int main(int argc, char **argv) {
     char c = shm_ptr[i];
     putchar(c);
   }
+  munmap(shm_ptr, shm_size);
+  shm_unlink(shm_name);
   return 0;
 }
