@@ -104,12 +104,6 @@ int main(int argc, char **argv) {
     printf("\n");
   }
 
-  if (fclose(in) != EOF) {
-    perror(NULL);
-    free(matrix);
-    return errno;
-  }
-
   for (i = 0; i < x; i++)
     free(matrix[i]);
   free(matrix);
@@ -123,6 +117,14 @@ int main(int argc, char **argv) {
   free(matrix_in_2);
 
   free(matr_in);
+
+  free(thr);
+
+  if (fclose(in) == EOF) {
+    perror(NULL);
+    free(matrix);
+    return errno;
+  }
 
   return EXIT_SUCCESS;
 }
