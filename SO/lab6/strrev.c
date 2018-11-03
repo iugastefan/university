@@ -13,7 +13,7 @@ void *reverse(void *v) {
   return rword;
 }
 int main(int argc, char **argv) {
-  if(argc==1){
+  if (argc == 1) {
     printf("Program that reverses a string");
     return EXIT_SUCCESS;
   }
