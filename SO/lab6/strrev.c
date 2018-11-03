@@ -13,6 +13,10 @@ void *reverse(void *v) {
   return rword;
 }
 int main(int argc, char **argv) {
+  if(argc==1){
+    printf("Program that reverses a string");
+    return EXIT_SUCCESS;
+  }
   pthread_t thr;
   if (pthread_create(&thr, NULL, reverse, argv[1])) {
     perror(NULL);
@@ -25,5 +29,5 @@ int main(int argc, char **argv) {
   }
   printf("%s", rword);
   free(rword);
-  return 0;
+  return EXIT_SUCCESS;
 }
