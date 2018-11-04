@@ -61,48 +61,40 @@ int main(int argc, char **argv) {
     for (j = 0; j < x; j++)
       fscanf(in, "%d", &matrix_in_2[i][j]);
 
-  struct matrix_in *matr_in =
-      (struct matrix_in *)malloc(sizeof(struct matrix_in));
-  matr_in->marime = y;
-  matr_in->matrix_1 = matrix_in_1;
-  matr_in->matrix_2 = matrix_in_2;
-  matr_in->matrix_out = matrix;
+  struct matrix_in matr_in[x * x];
 
-  pthread_t *thr = (pthread_t *)malloc((x * x) * sizeof(pthread_t));
+  pthread_t thr[x * x];
   int w = 0;
 
   for (i = 0; i < x; i++) {
-    for (j = 0; j < x; j++) {
+    for (j = 0; j < x; j++, w++) {
 
-      matr_in->x = i;
-      matr_in->y = j;
+      matr_in[w].marime = y;
+      matr_in[w].matrix_1 = matrix_in_1;
+      matr_in[w].matrix_2 = matrix_in_2;
+      matr_in[w].matrix_out = matrix;
+      matr_in[w].x = i;
+      matr_in[w].y = j;
 
-      if (pthread_create(&thr[w], NULL, calc, (void *)matr_in)) {
+      if (pthread_create(&thr[w], NULL, calc, (void *)&matr_in[w])) {
         perror(NULL);
         int my_err = errno;
         fclose(in);
         free(matrix);
         return my_err;
       }
-      if (pthread_join(thr[w], NULL)) {
-        perror(NULL);
-        int my_err = errno;
-        fclose(in);
-        free(matrix);
-        return my_err;
-      }
-      w++;
     }
   }
-  /* for (i = 0; i < w; i++) { */
-  /*   if (pthread_join(thr[i], NULL)) { */
-  /*     perror(NULL); */
-  /*     int my_err = errno; */
-  /*     fclose(in); */
-  /*     free(matrix); */
-  /*     return my_err; */
-  /*   } */
-  /* } */
+
+  for (i = 0; i < w; i++) {
+    if (pthread_join(thr[i], NULL)) {
+      perror(NULL);
+      int my_err = errno;
+      fclose(in);
+      free(matrix);
+      return my_err;
+    }
+  }
 
   for (i = 0; i < x; i++) {
     for (j = 0; j < x; j++)
@@ -121,10 +113,6 @@ int main(int argc, char **argv) {
   for (i = 0; i < y; i++)
     free(matrix_in_2[i]);
   free(matrix_in_2);
-
-  free(matr_in);
-
-  free(thr);
 
   if (fclose(in) == EOF) {
     perror(NULL);
