@@ -49,5 +49,7 @@ int main(void) {
     }
   }
 
+  sem_destroy(&sem);
+
   return EXIT_SUCCESS;
 }
