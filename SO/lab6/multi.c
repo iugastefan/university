@@ -4,23 +4,24 @@
 #include <stdlib.h>
 
 struct matrix_in {
+  int marime;
   int x;
   int y;
-  int marime;
   int **matrix_1;
   int **matrix_2;
+  int **matrix_out;
 };
 
 void *calc(void *v) {
   struct matrix_in *matr_in = (struct matrix_in *)v;
   int i;
-  int *sum = (int *)malloc(sizeof(int));
-  *sum = 0;
+  int sum = 0;
   int x = matr_in->x;
   int y = matr_in->y;
   for (i = 0; i < matr_in->marime; i++)
-    *sum += matr_in->matrix_1[x][i] * matr_in->matrix_2[i][y];
-  return (void *)sum;
+    sum += matr_in->matrix_1[x][i] * matr_in->matrix_2[i][y];
+  matr_in->matrix_out[x][y] = sum;
+  return NULL;
 }
 
 int main(int argc, char **argv) {
@@ -65,11 +66,12 @@ int main(int argc, char **argv) {
   matr_in->marime = y;
   matr_in->matrix_1 = matrix_in_1;
   matr_in->matrix_2 = matrix_in_2;
+  matr_in->matrix_out = matrix;
 
   pthread_t *thr = (pthread_t *)malloc((x * x) * sizeof(pthread_t));
   int w = 0;
 
-  for (i = 0; i < x; i++)
+  for (i = 0; i < x; i++) {
     for (j = 0; j < x; j++) {
 
       matr_in->x = i;
@@ -82,20 +84,25 @@ int main(int argc, char **argv) {
         free(matrix);
         return my_err;
       }
-
-      int *sum;
-      if (pthread_join(thr[w], (void **)&sum)) {
+      if (pthread_join(thr[w], NULL)) {
         perror(NULL);
         int my_err = errno;
         fclose(in);
         free(matrix);
         return my_err;
       }
-
-      matrix[i][j] = *sum;
-      free(sum);
       w++;
     }
+  }
+  /* for (i = 0; i < w; i++) { */
+  /*   if (pthread_join(thr[i], NULL)) { */
+  /*     perror(NULL); */
+  /*     int my_err = errno; */
+  /*     fclose(in); */
+  /*     free(matrix); */
+  /*     return my_err; */
+  /*   } */
+  /* } */
 
   for (i = 0; i < x; i++) {
     for (j = 0; j < x; j++)
@@ -121,7 +128,6 @@ int main(int argc, char **argv) {
 
   if (fclose(in) == EOF) {
     perror(NULL);
-    free(matrix);
     return errno;
   }
 
