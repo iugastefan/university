@@ -1,41 +1,173 @@
 body {
-  display: grid;
-  grid-template-rows: 10% auto;
-  background: #002b36;
-  margin: unset;
-  height: 100vh;
-  font-family: 'Roboto', sans-serif;
+    background: #ffffff;
+    margin: unset;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 
-header {
-  background: #073642;
-  color: #93a1a1;
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #menu {
+        position: fixed;
+        width: 100%;
+        height: 15rem;
+        background: #5298d9;
+        color: #000000;
+        font-size: xx-large;
+    }
+
+        #menu #burger {
+            visibility: hidden;
+            user-select: none;
+            padding-left: 2.5rem;
+            padding-top: 2.5rem;
+            width: 2em;
+        }
+
+        #menu #logo {
+            display: block;
+            user-select: none;
+            height: 10rem;
+            margin: auto;
+            padding-top: 3rem;
+            /*left: 42%;*/
+        }
+
+    aside {
+        position: fixed;
+        top: 15rem;
+        width: 100%;
+        height: 10rem;
+        background-color: #006aa7;
+        border-bottom: 1rem solid #004078;
+        border-radius: 0 0 1rem 1rem;
+    }
+
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        font-size: 3rem;
+        padding: 3rem;
+        justify-content: space-around;
+    }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 0.3em 0;
+        }
+
+        nav #current {
+            color: #fecc00;
+        }
+
+    main {
+        padding-top: 30rem;
+        padding-bottom: 6rem;
+        padding-left: 10%;
+        width: 80%;
+    }
+
+        main p {
+            font-size: 3rem;
+        }
+
 }
 
-nav a {
-  text-decoration: none;
-  color: inherit;
-  vertical-align: middle;
-  padding: 0 10px;
+@media only screen and (min-device-width : 1224px) {
+    #menu {
+        position: fixed;
+        width: 100%;
+        height: 9rem;
+        background: #5298d9;
+        color: #000000;
+        font-size: xx-large;
+    }
+
+        #menu #burger {
+            user-select: none;
+            padding-left: 2.5rem;
+            padding-top: 2.5rem;
+            width: 2em;
+        }
+
+        #menu #logo {
+            position: fixed;
+            display: block;
+            user-select: none;
+            height: 7rem;
+            margin: auto;
+            top: 1rem;
+            left: 42%;
+        }
+
+    aside {
+        position: fixed;
+        top: 9rem;
+        visibility: hidden;
+        width: 20%;
+        height: 90%;
+        background-color: #006aa7;
+        border-right: 1rem solid #004078;
+        border-radius: 0 1rem 1rem 0;
+    }
+
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        font-size: xx-large;
+        padding-top: 1rem;
+        align-items: center;
+    }
+
+        nav a {
+            display: block;
+            margin: auto;
+            text-decoration: none;
+            color: #ffffff;
+            padding: 3% 0;
+        }
+
+        nav #current {
+            color: #fecc00;
+        }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        padding-top: 15rem;
+        padding-bottom: 6rem;
+        padding-left: 25%;
+        width: 57%;
+    }
+
+        main p {
+            font-size: x-large;
+        }
+
+    figure {
+        display: block;
+        margin: auto;
+        margin-bottom: 3em;
+        width: 25em;
+        border: solid;
+    }
+
+        figure figcaption {
+            background: #c69c00;
+            color: #000000;
+            text-align: center;
+        }
+
+        figure img {
+            width: 100%;
+        }
 }
 
-nav {
-  display: flex;
-  font-size: 3em;
-  height: 100%;
-  padding: 0 16px;
-  align-items: center;
-}
-
-nav button {
-  background: inherit;
-  margin-left: auto;
-  font-size: inherit;
-  color: #b58900;
-  border: 5px solid #002b36;
-  border-radius: 5px;
-}
-
-nav img {
-  height: 100%;
+@media only screen and (max-width : 600px) {
+    #logo {
+        visibility: hidden;
+    }
 }
