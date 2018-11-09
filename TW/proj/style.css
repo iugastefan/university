@@ -29,7 +29,6 @@ body {
             height: 10rem;
             margin: auto;
             padding-top: 3rem;
-            /*left: 42%;*/
         }
 
     aside {
@@ -68,10 +67,54 @@ body {
         width: 80%;
     }
 
-        main p {
-            font-size: 3rem;
+        main.photos {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: space-between;
         }
 
+        main p {
+            font-size: x-large;
+        }
+
+    figure {
+        display: block;
+        margin: auto;
+        margin-bottom: 3em;
+        width: 90%;
+    }
+
+        figure figcaption {
+            background: #c69c00;
+            color: #000000;
+            text-align: center;
+            font-size: x-large;
+        }
+
+        figure img {
+            width: 100%;
+        }
+
+    table, th, td {
+        border: 0.2rem solid #c69c00;
+        text-align: center;
+    }
+
+    th {
+        background: #fecc00;
+    }
+
+    table {
+        width: 100%;
+        font-size: 2rem;
+        border-collapse: collapse;
+        margin-bottom: 5em;
+    }
+
+        table caption {
+            font-size: 3rem;
+        }
 }
 
 @media only screen and (min-device-width : 1224px) {
@@ -134,14 +177,23 @@ body {
         }
 
     main {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: space-between;
         padding-top: 15rem;
         padding-bottom: 6rem;
-        padding-left: 25%;
+        padding-left: 22%;
         width: 57%;
     }
+
+        main.photos {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        main.awards {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
 
         main p {
             font-size: x-large;
@@ -152,17 +204,36 @@ body {
         margin: auto;
         margin-bottom: 3em;
         width: 25em;
-        border: solid;
     }
 
         figure figcaption {
             background: #c69c00;
             color: #000000;
             text-align: center;
+            font-size: x-large;
         }
 
         figure img {
             width: 100%;
+        }
+
+    table, th, td {
+        border: 0.2rem solid #c69c00;
+        text-align: center;
+    }
+
+    th {
+        background: #fecc00;
+    }
+
+    table {
+        font-size: x-large;
+        border-collapse: collapse;
+        margin-bottom: 5em;
+    }
+
+        table caption {
+            font-size: xx-large;
         }
 }
 
