@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"math"
 )
 
 type punct struct {
@@ -18,32 +19,30 @@ type equation struct {
 func delta(d1, d2 equation) int {
 	return d1.a*d2.b - d2.a*d1.b
 }
-func calc_equation(p1, p2 punct) equation {
+func calcEquation(p1, p2 punct) equation {
 	a := p1.y - p2.y
 	b := p2.x - p1.x
-	c := p1.x*p2.y - p1.y - p2.x
+	c := p1.x*p2.y - p1.y*p2.x
 	return equation{a, b, c}
 }
-func verif(p punct, d equation) bool {
-	if d.a*p.x+d.b*p.y+d.c == 0 {
-		return true
-	}
-	return false
+func between(p punct, d segment) bool {
+	return Round(dist(d.x, p)+dist(p, d.y), 0.05) == Round(dist(d.x, d.y), 0.05)
 }
-func probl1(d1, d2 equation) (punct, error) {
+func probl1(p1, p2, p3, p4 punct) (punct, error) {
+	d1, d2 := calcEquation(p1, p2), calcEquation(p3, p4)
 	x := (-d1.c*d2.b + d2.c*d1.b) / delta(d1, d2)
 	y := (d1.a*(-d2.c) + d2.a*d1.c) / delta(d1, d2)
 	p := punct{x, y}
-	if verif(p, d1) && verif(p, d2) {
+	if between(p, segment{p1, p2}) && between(p, segment{p3, p4}) {
 		return p, nil
 	}
 	return p, errors.New("punctul nu se verifica")
 }
-func dist(p1, p2 punct) int {
-	return (p1.x - p2.x) ^ 2 + (p1.y - p2.y) ^ 2
+func dist(p1, p2 punct) float64 {
+	return math.Sqrt(math.Pow(float64(p1.x-p2.x), 2) + math.Pow(float64(p1.y-p2.y), 2))
 }
-func between(p punct, d segment) bool {
-	return dist(d.x, p)+dist(p, d.y) == dist(d.x, d.y)
+func Round(x, unit float64) float64 {
+	return math.Round(x/unit) * unit
 }
 func probl2a(p1, p2, p3, p4 punct) (segment, error) {
 	if between(p1, segment{p3, p4}) && between(p2, segment{p3, p4}) {
@@ -70,28 +69,36 @@ func probl2a(p1, p2, p3, p4 punct) (segment, error) {
 	}
 	return segment{}, errors.New("multimea vida")
 }
+func rangMatrExt(d1, d2 equation) (int) {
+	if d1.a*d2.b-d2.a*d1.b == 0 && d1.a*d2.c-d2.a*d1.c == 0 && d1.b*d2.c-d2.b*d1.c == 0 {
+		return 1
+	}
+	return 2
+}
 func probl(p1, p2, p3, p4 punct) {
-	d1 := calc_equation(p1, p2)
-	d2 := calc_equation(p3, p4)
+	d1 := calcEquation(p1, p2)
+	d2 := calcEquation(p3, p4)
 
 	if delta(d1, d2) != 0 {
-		p, err := probl1(d1, d2)
-		if err == nil {
-			fmt.Println(p)
-		} else {
+		p, err := probl1(p1, p2, p3, p4)
+		if err != nil {
 			fmt.Println(err)
+		} else {
+			fmt.Println(p)
 		}
 	} else {
-		if d1.a*d2.b-d2.a*d1.b == 0 && d1.a*d2.c-d2.a*d1.c == 0 && d1.b*d2.c-d2.b*d1.c == 0 {
+		if rangMatrExt(d1, d2) == 1 {
 			seg, err := probl2a(p1, p2, p3, p4)
 			if err != nil {
-				fmt.Println(seg)
-			} else {
 				fmt.Println(err)
+			} else {
+				fmt.Println(seg)
 			}
+		} else {
+			fmt.Println("segmentele nu se intersecteaza")
 		}
 	}
 }
 func main() {
-
+	probl(punct{-1, -1}, punct{1, 1}, punct{1, -1}, punct{3, 1})
 }
