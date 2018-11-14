@@ -1,12 +1,9 @@
-var x = 0;
-function menu() {
-    if (x == 0) {
+function menu(x) {
+    if (x === 0) {
         document.getElementsByTagName('aside')[0].style.visibility = 'visible';
-        x++;
     }
     else {
         document.getElementsByTagName('aside')[0].style.visibility = 'hidden';
-        x--;
     }
 }
 function image() {
@@ -25,7 +22,8 @@ function image() {
     }
 }
 function windowInit() {
-    document.getElementById('burger').onclick = menu
+    document.getElementById('burger').addEventListener('mouseover', function () { menu(0); });
+    document.getElementsByTagName('main')[0].addEventListener('mouseover', function () { menu(1); });
     if (document.getElementsByTagName('title')[0].innerText == 'Project - Photos')
         image()
 }
