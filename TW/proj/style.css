@@ -15,21 +15,21 @@ body {
         font-size: xx-large;
     }
 
-        #menu #burger {
-            visibility: hidden;
-            user-select: none;
-            padding-left: 2.5rem;
-            padding-top: 2.5rem;
-            width: 2em;
-        }
+    #menu #burger {
+        visibility: hidden;
+        user-select: none;
+        padding-left: 2.5rem;
+        padding-top: 2.5rem;
+        width: 2em;
+    }
 
-        #menu #logo {
-            display: block;
-            user-select: none;
-            height: 10rem;
-            margin: auto;
-            padding-top: 3rem;
-        }
+    #menu #logo {
+        display: block;
+        user-select: none;
+        height: 10rem;
+        margin: auto;
+        padding-top: 3rem;
+    }
 
     aside {
         position: fixed;
@@ -50,15 +50,28 @@ body {
         justify-content: space-around;
     }
 
-        nav a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 0.3em 0;
-        }
+    nav>a {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0.3em 0;
+    }
+    nav div{
+        padding: 0.3em 0;
+    }
+    nav div a {
+        color: #ffffff;
+        text-decoration: none;
+    }
 
-        nav #current {
-            color: #fecc00;
-        }
+    nav #current {
+        color: #fecc00;
+    }
+    nav div span {
+        display: none;
+    }
+    ul{
+        display: none;
+    }
 
     main {
         padding-top: 30rem;
@@ -67,16 +80,16 @@ body {
         width: 80%;
     }
 
-        main.photos {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: space-between;
-        }
+    main.photos {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-between;
+    }
 
-        main p {
-            font-size: x-large;
-        }
+    main p {
+        font-size: x-large;
+    }
 
     figure {
         display: block;
@@ -85,18 +98,20 @@ body {
         width: 90%;
     }
 
-        figure figcaption {
-            background: #c69c00;
-            color: #000000;
-            text-align: center;
-            font-size: x-large;
-        }
+    figure figcaption {
+        background: #c69c00;
+        color: #000000;
+        text-align: center;
+        font-size: x-large;
+    }
 
-        figure img {
-            width: 100%;
-        }
+    figure img {
+        width: 100%;
+    }
 
-    table, th, td {
+    table,
+    th,
+    td {
         border: 0.2rem solid #c69c00;
         text-align: center;
     }
@@ -112,9 +127,9 @@ body {
         margin-bottom: 5em;
     }
 
-        table caption {
-            font-size: 3rem;
-        }
+    table caption {
+        font-size: 3rem;
+    }
 }
 
 @media only screen and (min-device-width : 1224px) {
@@ -127,24 +142,25 @@ body {
         font-size: xx-large;
     }
 
-        #menu #burger {
-            user-select: none;
-            padding-left: 2.5rem;
-            padding-top: 2.5rem;
-            width: 2em;
-        }
+    #menu #burger {
+        user-select: none;
+        padding-left: 2.5rem;
+        padding-top: 2.5rem;
+        width: 2em;
+    }
 
-        #menu #logo {
-            position: fixed;
-            display: block;
-            user-select: none;
-            height: 7rem;
-            margin: auto;
-            top: 1rem;
-            left: 42%;
-        }
+    #menu #logo {
+        position: fixed;
+        display: block;
+        user-select: none;
+        height: 7rem;
+        margin: auto;
+        top: 1rem;
+        left: 42%;
+    }
 
     aside {
+        user-select: none;
         position: fixed;
         top: 9rem;
         visibility: hidden;
@@ -164,40 +180,67 @@ body {
         align-items: center;
     }
 
-        nav a {
-            display: block;
-            margin: auto;
-            text-decoration: none;
-            color: #ffffff;
-            padding: 3% 0;
-        }
+    nav>a {
+        display: block;
+        margin: auto;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 3% 0;
+    }
 
-        nav #current {
-            color: #fecc00;
-        }
+    nav div a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    nav div span {
+        color: #ffffff;
+    }
+
+
+    a#current {
+        color: #fecc00;
+    }
+
+    ul {
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li a {
+        text-align: center;
+        font-size: large;
+        text-decoration: none;
+        display: block;
+        margin: auto;
+        color: #ffffff;
+    }
 
     main {
         padding-top: 15rem;
+        left: 22%;
         padding-bottom: 6rem;
         padding-left: 22%;
         width: 57%;
     }
 
-        main.photos {
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-between;
-        }
+    main.photos {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+    }
 
-        main.awards {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
+    main.awards {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
 
-        main p {
-            font-size: x-large;
-        }
+    main p {
+        font-size: x-large;
+    }
 
     figure {
         display: block;
@@ -206,18 +249,20 @@ body {
         width: 25em;
     }
 
-        figure figcaption {
-            background: #c69c00;
-            color: #000000;
-            text-align: center;
-            font-size: x-large;
-        }
+    figure figcaption {
+        background: #c69c00;
+        color: #000000;
+        text-align: center;
+        font-size: x-large;
+    }
 
-        figure img {
-            width: 100%;
-        }
+    figure img {
+        width: 100%;
+    }
 
-    table, th, td {
+    table,
+    th,
+    td {
         border: 0.2rem solid #c69c00;
         text-align: center;
     }
@@ -232,9 +277,9 @@ body {
         margin-bottom: 5em;
     }
 
-        table caption {
-            font-size: xx-large;
-        }
+    table caption {
+        font-size: xx-large;
+    }
 }
 
 @media only screen and (max-width : 600px) {
