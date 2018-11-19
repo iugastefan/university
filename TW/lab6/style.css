@@ -1,0 +1,73 @@
+#r {
+    position: relative;
+    top: 50px;
+}
+
+p {
+    border: solid black 1px;
+}
+
+#a {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
+#f {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+}
+
+#s {
+    position: sticky;
+    bottom: 10px;
+}
+
+#a,
+#r,
+#f,
+#s {
+    border: solid blue 3px;
+    background: cyan;
+    z-index: 2;
+}
+
+section {
+    position: relative;
+    border: solid red 3px;
+}
+
+img {
+    width: 20%;
+    transition: transform 3s;
+    float: right;
+    border-radius: 50%;
+}
+
+body {
+    transition: transform 3s;
+    animation-name:move;
+    animation-duration:5s;
+}
+
+
+@keyframes move {
+    from {
+        background: red;
+    }
+
+    to {
+        background: blue;
+        transform: rotate(360deg);
+    }
+}
+
+article {
+    overflow: auto;
+    border: solid purple 3px;
+}
+
+article p:nth-of-type(2) {
+    clear: right;
+}

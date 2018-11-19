@@ -32,13 +32,6 @@ void nerec(const vector<vector<int>> &matrice, int i, int j) {
 int main() {
   vector<vector<int>> matrice{
       {1, 2, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {1000, 1, 1, 1, 1}};
-  // cout << rec(matrice, 0, 0) << endl;
-  // for (auto x : numarare) {
-  //   for (auto y : x) {
-  //     cout << y << " ";
-  //   }
-  //   cout << endl;
-  // }
   for (int x = matrice.size() - 1; x >= 0; x--)
     for (int y = matrice[x].size() - 1; y >= 0; y--)
       nerec(matrice, x, y);
