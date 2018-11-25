@@ -1,0 +1,49 @@
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* width: 40%; */
+    border: solid;
+}
+
+body{
+    user-select: none;
+}
+h1 {
+    border: solid;
+    order: 5;
+}
+
+figure {
+    border: solid 1px;
+}
+
+figure:nth-of-type(1) {
+    flex-grow: 1;
+}
+
+figure:nth-of-type(2) {
+    flex-grow: 4;
+}
+
+img {
+    width: 250px;
+    padding: 5px;
+}
+
+figcaption {
+    text-align: center;
+    background-color: cyan;
+}
+
+.a {
+    background-color: magenta;
+}
+
+.b {
+    border: solid 4px cyan;
+}
+
+.c {
+    font-size: 30px;
+}
