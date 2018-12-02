@@ -36,13 +36,13 @@ int main(int argc, char **argv) {
     return errno;
   }
 
-  int x, y;
-  fscanf(in, "%d%d", &x, &y);
+  int x, y, z;
+  fscanf(in, "%d%d%d", &x, &y, &z);
 
   int **matrix = (int **)malloc(x * sizeof(int *));
   int i;
   for (i = 0; i < x; i++)
-    matrix[i] = (int *)malloc(x * sizeof(int));
+    matrix[i] = (int *)malloc(z * sizeof(int));
 
   int **matrix_in_1 = (int **)malloc(x * sizeof(int *));
   for (i = 0; i < x; i++)
@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
 
   int **matrix_in_2 = (int **)malloc(y * sizeof(int *));
   for (i = 0; i < y; i++)
-    matrix_in_2[i] = (int *)malloc(x * sizeof(int));
+    matrix_in_2[i] = (int *)malloc(z * sizeof(int));
 
   int j;
   for (i = 0; i < x; i++)
@@ -58,16 +58,16 @@ int main(int argc, char **argv) {
       fscanf(in, "%d", &matrix_in_1[i][j]);
 
   for (i = 0; i < y; i++)
-    for (j = 0; j < x; j++)
+    for (j = 0; j < z; j++)
       fscanf(in, "%d", &matrix_in_2[i][j]);
 
-  struct matrix_in matr_in[x * x];
+  struct matrix_in matr_in[x * z];
 
-  pthread_t thr[x * x];
+  pthread_t thr[x * z];
   int w = 0;
 
   for (i = 0; i < x; i++) {
-    for (j = 0; j < x; j++, w++) {
+    for (j = 0; j < z; j++, w++) {
 
       matr_in[w].marime = y;
       matr_in[w].matrix_1 = matrix_in_1;
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
   }
 
   for (i = 0; i < x; i++) {
-    for (j = 0; j < x; j++)
+    for (j = 0; j < z; j++)
       printf("%d ", matrix[i][j]);
     printf("\n");
   }
