@@ -76,17 +76,19 @@ static int do_read(const char *path, char *buffer, size_t size, off_t offset,
   /* else */
   /*   return -1; */
   /* memcpy(buffer, selectedText + offset, size); */
-  zip_file_t *file = zip_fopen(ziparchive, path, ZIP_FL_ENC_GUESS);
-    printf("null");
+  zip_file_t *file = zip_fopen(ziparchive, path+1, ZIP_FL_ENC_GUESS);
+  if(file ==NULL)
+    printf("null, %s\n", path);
   /* zip_fseek(file,size,offset); */
   zip_int64_t bytes_read = zip_fread(file, buffer, size);
-  if(bytes_read==-1)
+  if (bytes_read == -1)
     printf("err");
   return bytes_read;
 }
 static struct fuse_operations operations = {
-    .getattr = do_getattr, .readdir = do_readdir,
-    /* .read = do_read, */
+    .getattr = do_getattr,
+    .readdir = do_readdir,
+    .read = do_read,
 };
 static int myfs_opt_proc(void *data, const char *arg, int key,
                          struct fuse_args *outargs) {
