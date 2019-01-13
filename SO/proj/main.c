@@ -8,6 +8,8 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+static char *filename;
+struct archive *archive;
 
 static int do_getattr(const char *path, struct stat *st) {
   printf("[getattr] Called\n");
@@ -38,8 +40,18 @@ static int do_readdir(const char *path, void *buffer, fuse_fill_dir_t filler,
       0) // If the user is trying to show the files/directories of the root
          // directory show the following
   {
-    filler(buffer, "file54", NULL, 0);
-    filler(buffer, "file349", NULL, 0);
+    int r;
+    struct archive_entry *entry;
+    if ((r = archive_read_open_filename(archive, filename, 10240))) {
+      printf("read open err");
+      exit(1);
+    }
+    for (;;) {
+      r = archive_read_next_header(archive, &entry);
+      if (r == ARCHIVE_EOF)
+        break;
+      filler(buffer, archive_entry_pathname(entry), NULL, 0);
+    }
   }
 
   return 0;
@@ -73,9 +85,11 @@ static int myfs_opt_proc(void *data, const char *arg, int key,
 int main(int argc, char *argv[]) {
   if (argc != 3)
     return 1;
-  char *file = argv[1];
+  filename = argv[1];
   char *mountpoint = argv[2];
-  printf("%s %s", file, mountpoint);
+
+  archive = archive_read_new();
+  archive_read_support_format_all(archive);
 
   struct fuse_args args = FUSE_ARGS_INIT(argc, argv);
   fuse_opt_parse(&args, NULL, NULL, myfs_opt_proc);
