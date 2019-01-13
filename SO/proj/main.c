@@ -26,7 +26,7 @@ static int do_getattr(const char *path, struct stat *st) {
   } else {
     st->st_mode = S_IFREG | 0644;
     st->st_nlink = 1;
-    struct zip_stat *stat;
+    struct zip_stat *stat = (struct zip_stat *)malloc(sizeof(struct zip_stat));
     zip_stat(ziparchive, path + 1, ZIP_FL_UNCHANGED, stat);
     if (strcmp(path, "/") == 0)
       st->st_size = 1024;
@@ -84,7 +84,7 @@ static int do_read(const char *path, char *buffer, size_t size, off_t offset,
   zip_file_t *file = zip_fopen(ziparchive, path + 1, ZIP_FL_ENC_GUESS);
   if (file == NULL)
     printf("null, %s\n", path);
-  /* zip_fseek(file,size,offset); */
+  zip_fseek(file, offset, 0);
   zip_int64_t bytes_read = zip_fread(file, buffer, size);
   if (bytes_read == -1)
     printf("err");
