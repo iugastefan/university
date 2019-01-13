@@ -15,7 +15,7 @@ struct zip *ziparchive;
 
 static int do_getattr(const char *path, struct stat *st) {
   printf("[getattr] Called\n");
-  printf("\tAttributes of %s requested\n", path);
+  printf("\tAttributes of %s requested\n", path + 1);
   st->st_uid = getuid();
   st->st_gid = getgid();
   st->st_atime = time(NULL);
@@ -26,7 +26,12 @@ static int do_getattr(const char *path, struct stat *st) {
   } else {
     st->st_mode = S_IFREG | 0644;
     st->st_nlink = 1;
-    st->st_size = 1024;
+    struct zip_stat *stat;
+    zip_stat(ziparchive, path + 1, ZIP_FL_UNCHANGED, stat);
+    if (strcmp(path, "/") == 0)
+      st->st_size = 1024;
+    else
+      st->st_size = stat->size;
   }
 
   return 0;
@@ -76,8 +81,8 @@ static int do_read(const char *path, char *buffer, size_t size, off_t offset,
   /* else */
   /*   return -1; */
   /* memcpy(buffer, selectedText + offset, size); */
-  zip_file_t *file = zip_fopen(ziparchive, path+1, ZIP_FL_ENC_GUESS);
-  if(file ==NULL)
+  zip_file_t *file = zip_fopen(ziparchive, path + 1, ZIP_FL_ENC_GUESS);
+  if (file == NULL)
     printf("null, %s\n", path);
   /* zip_fseek(file,size,offset); */
   zip_int64_t bytes_read = zip_fread(file, buffer, size);
