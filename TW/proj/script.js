@@ -8,7 +8,7 @@ function menu(x) {
 
 function submenu() {
     if (
-        document.getElementById('submenu').style.display == ''
+        document.getElementById('submenu').style.display === ''
     ) {
         document.getElementById('submenu').style.display = 'block';
         document.getElementById('toggle-menu').innerText = '-';
@@ -35,17 +35,62 @@ function image() {
     }
 }
 
+function key(event) {
+    if (event.defaultPrevented) {
+        return;
+    }
+    event.preventDefault();
+    const key = event.key || event.keyCode;
+    const pages = ['home.html', 'history.html', 'photos.html', 'awards.html'];
+    if (key === 'ArrowUp') {
+        window.location.href = pages[0]
+    } else if (key === 'ArrowLeft') {
+        const loc = window.location.href.split('/').slice(-1)[0];
+        if (pages.indexOf(loc) !== 0)
+            window.location.href = pages[pages.indexOf(loc) - 1];
+    } else if (key === 'ArrowRight') {
+        const loc = window.location.href.split('/').slice(-1)[0];
+        if (pages.indexOf(loc) !== pages.length - 1)
+            window.location.href = pages[pages.indexOf(loc) + 1];
+    }
+}
+
+function screensaver() {
+    const img = document.createElement('img');
+    img.src = 'img/screensaver.gif';
+    img.alt = 'screensaver';
+    img.style.width = screen.width+'px';
+    img.style.zIndex = '9';
+    img.style.position = 'fixed';
+    img.style.top = '0px';
+    let id = setInterval(function () {
+        let body = document.getElementsByTagName('body')[0];
+        body.appendChild(img);
+    }, 3000);
+    img.addEventListener('mousemove', function () {
+        img.parentNode.removeChild(img);
+        clearInterval(id);
+        screensaver();
+    });
+}
+
 function windowInit() {
-    document.getElementById('burger').addEventListener('mouseover', function() {
+    document.getElementById('burger').addEventListener('mouseover', function () {
         menu(0);
     });
-    document.getElementsByTagName('main')[0].addEventListener('mouseover', function() {
+    document.getElementsByTagName('main')[0].addEventListener('mouseover', function () {
         menu(1);
     });
-    document.getElementById('toggle-menu').addEventListener('click', function() {
+    document.getElementById('toggle-menu').addEventListener('click', function () {
         submenu();
     });
-    if (document.getElementsByTagName('title')[0].innerText == 'Project - Photos')
+    if (document.getElementsByTagName('title')[0].innerText === 'Project - Photos')
         image();
+    document.getElementsByTagName('html')[0].addEventListener('keydown', function (event) {
+        key(event);
+    });
+    if (screen.width > 1224)
+        screensaver();
 }
+
 window.onload = windowInit;
