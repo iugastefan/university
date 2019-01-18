@@ -86,7 +86,8 @@ function clock(clockDiv) {
     setInterval(function (clock) {
         let date = new Date();
         clock.innerText = number(date.getHours()) + ":" + number(date.getMinutes()) + ":" + number(date.getSeconds());
-    }, 1000, clockDiv)
+    }, 1000, clockDiv);
+    clockDiv.addEventListener('click', clockDiv.random)
 
 }
 
@@ -135,10 +136,18 @@ function windowInit() {
     document.getElementsByTagName('html')[0].addEventListener('keydown', function (event) {
         key(event);
     });
+
     if (screen.width > 1224)
         screensaver();
+
+
     let clockDiv = document.getElementById('clock');
+    clockDiv.random = function () {
+        let val = Math.floor(Math.random() * 999999 + 100000).toString();
+        this.innerText = val.substr(0, 2) + ':' + val.substr(2, 2) + ':' + val.substr(4, 2);
+    };
     clock(clockDiv);
+
     window.addEventListener('scroll', function () {
         localStorage.setItem('scroll', window.pageYOffset.toString())
     });
