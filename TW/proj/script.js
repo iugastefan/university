@@ -106,7 +106,7 @@ function sideAnimation() {
 
 function dragDrop() {
     let input = document.getElementsByTagName('input')[0];
-    if (input !== null) {
+    if (input !== undefined) {
         input.addEventListener('drop', function (ev) {
             ev.preventDefault();
             input.value = ev.dataTransfer.getData('html');
