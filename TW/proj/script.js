@@ -1,7 +1,7 @@
 function menu(x) {
     if (x === 0) {
         document.getElementsByTagName('aside')[0].style.animationName = 'aside';
-        document.getElementsByTagName('aside')[0].style.visibility= 'visible';
+        document.getElementsByTagName('aside')[0].style.visibility = 'visible';
     } else {
         if (document.getElementsByTagName('aside')[0].style.animationName === 'aside')
             document.getElementsByTagName('aside')[0].style.animationName = 'aside2';
@@ -103,6 +103,23 @@ function sideAnimation() {
     side.style.left = -(parseInt(style.width.slice(0, -2)) + parseInt(style.borderRightWidth.slice(0, -2))) + 'px'
 }
 
+function dropDown() {
+    let input = document.getElementsByTagName('input')[0];
+    if (input !== null) {
+        input.addEventListener('drop', function (ev) {
+            ev.preventDefault();
+            input.value = ev.dataTransfer.getData('html');
+        })
+    }
+    let menu = document.getElementById('menu');
+    Array.prototype.forEach.call(menu.childNodes, function (child) {
+        child.draggable = 'true';
+        child.addEventListener('dragstart', function (ev) {
+            ev.dataTransfer.setData('html', ev.currentTarget.outerHTML)
+        })
+    })
+}
+
 function windowInit() {
     document.getElementById('burger').addEventListener('mouseover', function () {
         menu(0);
@@ -128,6 +145,9 @@ function windowInit() {
     rememberScroll();
     sideAnimation();
     window.addEventListener('resize', sideAnimation);
+
+    dropDown();
+
 }
 
 window.onload = windowInit;

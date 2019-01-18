@@ -154,10 +154,15 @@ body {
   }
   
   #menu #burger {
+    position: fixed;
     user-select: none;
     padding-left: 2.5rem;
     padding-top: 2.5rem;
     width: 2em;
+    transition: transform 1s;
+  }
+  #menu #burger:hover{
+    transform: rotate(90deg) translateY(-1em);
   }
   
   #menu #logo {
@@ -313,6 +318,11 @@ body {
   
   table caption {
     font-size: xx-large;
+  }
+  
+  input{
+    width: 50%;
+    height: 4rem;
   }
 }
 
