@@ -176,6 +176,20 @@ body {
     left: 90%;
   }
   
+  @keyframes aside {
+    0% {
+      left: calc(-20% - 1rem)
+    }
+    100% {left: 0
+    }
+  }
+  @keyframes aside2 {
+    100% {
+      left: calc(-20% - 1rem)
+    }
+    0% {left: 0
+    }
+  }
   aside {
     user-select: none;
     position: fixed;
@@ -186,6 +200,10 @@ body {
     background-color: #006aa7;
     border-right: 1rem solid #004078;
     border-radius: 0 1rem 1rem 0;
+  
+    /*animation-name: aside;*/
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
   
   

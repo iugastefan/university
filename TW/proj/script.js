@@ -1,8 +1,10 @@
 function menu(x) {
     if (x === 0) {
-        document.getElementsByTagName('aside')[0].style.visibility = 'visible';
+        document.getElementsByTagName('aside')[0].style.animationName = 'aside';
+        document.getElementsByTagName('aside')[0].style.visibility= 'visible';
     } else {
-        document.getElementsByTagName('aside')[0].style.visibility = 'hidden';
+        if (document.getElementsByTagName('aside')[0].style.animationName === 'aside')
+            document.getElementsByTagName('aside')[0].style.animationName = 'aside2';
     }
 }
 
@@ -39,7 +41,8 @@ function key(event) {
     if (event.defaultPrevented) {
         return;
     }
-    event.preventDefault();
+    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight')
+        event.preventDefault();
     const key = event.key || event.keyCode;
     const pages = ['home.html', 'history.html', 'photos.html', 'awards.html'];
     if (key === 'ArrowUp') {
@@ -76,10 +79,13 @@ function screensaver() {
 
 function clock(clockDiv) {
     let date = new Date();
-    clockDiv.innerText = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    let number = function (x) {
+        return ('0' + x).slice(-2)
+    };
+    clockDiv.innerText = number(date.getHours()) + ":" + number(date.getMinutes()) + ":" + number(date.getSeconds());
     setInterval(function (clock) {
         let date = new Date();
-        clock.innerText = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        clock.innerText = number(date.getHours()) + ":" + number(date.getMinutes()) + ":" + number(date.getSeconds());
     }, 1000, clockDiv)
 
 }
@@ -89,6 +95,12 @@ function rememberScroll() {
     if (scroll !== null) {
         window.scrollTo(0, parseInt(scroll));
     }
+}
+
+function sideAnimation() {
+    let side = document.getElementsByTagName('aside')[0];
+    let style = window.getComputedStyle(side);
+    side.style.left = -(parseInt(style.width.slice(0, -2)) + parseInt(style.borderRightWidth.slice(0, -2))) + 'px'
 }
 
 function windowInit() {
@@ -114,6 +126,8 @@ function windowInit() {
         localStorage.setItem('scroll', window.pageYOffset.toString())
     });
     rememberScroll();
+    sideAnimation();
+    window.addEventListener('resize', sideAnimation);
 }
 
 window.onload = windowInit;
