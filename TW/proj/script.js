@@ -104,7 +104,7 @@ function sideAnimation() {
     side.style.left = -(parseInt(style.width.slice(0, -2)) + parseInt(style.borderRightWidth.slice(0, -2))) + 'px'
 }
 
-function dropDown() {
+function dragDrop() {
     let input = document.getElementsByTagName('input')[0];
     if (input !== null) {
         input.addEventListener('drop', function (ev) {
@@ -119,6 +119,7 @@ function dropDown() {
             ev.dataTransfer.setData('html', ev.currentTarget.outerHTML)
         })
     })
+
 }
 
 function windowInit() {
@@ -155,7 +156,7 @@ function windowInit() {
     sideAnimation();
     window.addEventListener('resize', sideAnimation);
 
-    dropDown();
+    dragDrop();
 
 }
 
