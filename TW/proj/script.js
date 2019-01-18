@@ -19,7 +19,7 @@ function submenu() {
 }
 
 function image() {
-    var images = ['Chris_Rorland.jpg', 'Hannes_Van_Dahl.jpg', 'Joakim_Broden.jpg',
+    const images = ['Chris_Rorland.jpg', 'Hannes_Van_Dahl.jpg', 'Joakim_Broden.jpg',
         'Par_Sundstrom.jpg', 'Tommy_Johansson.jpg', 'Download_Festival_Australia.jpg',
         'Sabaton_Open_Air_Festival.jpg', 'Wargaming_Office_in_Chicago.jpg', 'World_Memorial_Hall.jpg'
     ];
@@ -59,19 +59,36 @@ function screensaver() {
     const img = document.createElement('img');
     img.src = 'img/screensaver.gif';
     img.alt = 'screensaver';
-    img.style.width = screen.width+'px';
+    img.style.width = screen.width + 'px';
     img.style.zIndex = '9';
     img.style.position = 'fixed';
     img.style.top = '0px';
     let id = setInterval(function () {
         let body = document.getElementsByTagName('body')[0];
         body.appendChild(img);
-    }, 3000);
+    }, 20000);
     img.addEventListener('mousemove', function () {
-        img.parentNode.removeChild(img);
+        this.parentNode.removeChild(this);
         clearInterval(id);
         screensaver();
     });
+}
+
+function clock(clockDiv) {
+    let date = new Date();
+    clockDiv.innerText = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    setInterval(function (clock) {
+        let date = new Date();
+        clock.innerText = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    }, 1000, clockDiv)
+
+}
+
+function rememberScroll() {
+    let scroll = localStorage.getItem('scroll');
+    if (scroll !== null) {
+        window.scrollTo(0, parseInt(scroll));
+    }
 }
 
 function windowInit() {
@@ -91,6 +108,12 @@ function windowInit() {
     });
     if (screen.width > 1224)
         screensaver();
+    let clockDiv = document.getElementById('clock');
+    clock(clockDiv);
+    window.addEventListener('scroll', function () {
+        localStorage.setItem('scroll', window.pageYOffset.toString())
+    });
+    rememberScroll();
 }
 
 window.onload = windowInit;
