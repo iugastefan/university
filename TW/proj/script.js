@@ -110,6 +110,7 @@ function dragDrop() {
         input.addEventListener('drop', function (ev) {
             ev.preventDefault();
             input.value = ev.dataTransfer.getData('html');
+            input.classList.add('important');
         })
     }
     let menu = document.getElementById('menu');
@@ -153,7 +154,8 @@ function windowInit() {
         localStorage.setItem('scroll', window.pageYOffset.toString())
     });
     rememberScroll();
-    sideAnimation();
+    if (screen.width > 1224)
+        sideAnimation();
     window.addEventListener('resize', sideAnimation);
 
     dragDrop();

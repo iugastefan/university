@@ -324,6 +324,9 @@ body {
     width: 50%;
     height: 4rem;
   }
+  input.important{
+    background: goldenrod;
+  }
 }
 
 @media only screen and (max-width: 600px) {
