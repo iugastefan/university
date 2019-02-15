@@ -1,0 +1,16 @@
+body {
+    height: 98vh;
+}
+
+span {
+    display: inline-block;
+    width: 47%;
+    height: 100%;
+    border: solid black 2px;
+}
+img{
+    position: absolute;
+    width: 60px;
+    top:0px;
+    left:0px;
+}
