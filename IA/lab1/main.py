@@ -63,4 +63,39 @@ def rock_paper_scissors(alegere):
 
 
 # create_dictionary([1, 1, 2, 3, 2, 2, 2, 4, 3, 1, 4])
-rock_paper_scissors('scissors')
+# rock_paper_scissors('scissors')
+numar = 0
+
+
+def cows_and_bulls(raspuns):
+    global numar
+    if numar == 0:
+        numar = random.randint(1000, 9999)
+    print(numar, raspuns)
+    for x, y in enumerate(str(raspuns)):
+        if y in str(numar):
+            if str(numar)[x] == y:
+                print('b', end='')
+            else:
+                print('c', end='')
+        else:
+            print('.', end='')
+
+
+# cows_and_bulls(4239)
+
+
+def elemente_comune(lista1: list, lista2: list):
+    lista_comune = []
+    lista_necomune = []
+    for elem in lista1:
+        if elem in lista2:
+            lista_comune.append(elem)
+        else:
+            lista_necomune.append(elem)
+    return lista_comune, lista_necomune
+
+
+comune, necomune = elemente_comune([1, 5, 3, 6, 2, 7, 8, 3, 5, 7, 3, 2, 7],
+                                   [2, 4, 6, 2, 4, 6, 8, 9, 3, 5, 0, 0, 0])
+print(comune, necomune)
