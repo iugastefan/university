@@ -14,6 +14,26 @@ square(Z,X,Y) :- Z>1, scrie(X,Y),nl, W is Z-1, square(W,X,Y).
 
 concat([], List, List).
 concat([E| List1], List2, [E|List3]) :- concat(List1,List2,List3).
-a.
-all_a([E|List]) :- length(List,X), X>1, member(E,List), all_a(List).
-all_a([E|List]) :- [X|List], E =:= X.
+
+all_a([a]).
+all_a([X|List]) :- X = a, all_a(List).
+
+trans_a_b([a],[b]).
+trans_a_b([X|Lista],[Y|Listb]) :- X = a, Y = b, trans_a_b(Lista,Listb).
+
+scalarMult(_,[],[]).
+scalarMult(X,[Y|List],[Z|Lista2]) :-  Z is X*Y, scalarMult(X,List,Lista2).
+
+dot([],[],0).
+dot([X|Lista1],[Y|Lista2],R) :- dot(Lista1,Lista2,R1),  R is (X*Y + R1).
+
+max([W],W).
+max([Y|List],R) :- max(List, W), (Y>=W, R=Y;Y<W, R=W).
+
+palindrome([]).
+palindrome([_]).
+palindrome(List) :- append([X|Tail],[X],List) , palindrome(Tail).
+
+remove_duplicates([],[]).
+remove_duplicates([X|List],Y) :- member(X,List), !,remove_duplicates(List,Y).
+remove_duplicates([X|List],[X|Y]) :- remove_duplicates(List,Y).
