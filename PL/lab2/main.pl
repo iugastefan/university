@@ -37,3 +37,7 @@ palindrome(List) :- append([X|Tail],[X],List) , palindrome(Tail).
 remove_duplicates([],[]).
 remove_duplicates([X|List],Y) :- member(X,List), !,remove_duplicates(List,Y).
 remove_duplicates([X|List],[X|Y]) :- remove_duplicates(List,Y).
+
+invers(X,Y):-invers(X,Y,[]).
+invers([],Y,Y).
+invers([H|T],Y,Z):-invers(T,Y,[H|Z]).
