@@ -7,6 +7,11 @@ public class Valuta {
     private double comision_cumparare;
     private double comision_vanzare;
 
+    @Override
+    public String toString() {
+        return nume + '\t' + prescurtare + '\t' + +curs + "\tcomision_cumparare=" + comision_cumparare + "\tcomision_vanzare=" + comision_vanzare;
+    }
+
     public Valuta(String nume, String prescurtare, double curs, double comision_cumparare, double comision_vanzare) {
         this.nume = nume;
         this.prescurtare = prescurtare;

@@ -5,7 +5,7 @@ class Client extends Persoana {
     private String serie_id;
     private int numar_id;
 
-    public Client(String nume, String prenume, long cnp, String serie_id, int numar_id) {
+    Client(String nume, String prenume, long cnp, String serie_id, int numar_id) {
         this.nume = nume;
         this.prenume = prenume;
         this.cnp = cnp;
@@ -35,5 +35,10 @@ class Client extends Persoana {
 
     public void setNumar_id(int numar_id) {
         this.numar_id = numar_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Cnp: " + cnp + " Serie: " + serie_id + " Numar: " + numar_id + "\t Nume: " + nume + " Prenume: " + prenume;
     }
 }

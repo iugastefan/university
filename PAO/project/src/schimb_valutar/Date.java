@@ -1,5 +1,7 @@
 package schimb_valutar;
 
+import java.util.Objects;
+
 public class Date implements Comparable<Date> {
     private int zi;
     private int luna;
@@ -34,12 +36,23 @@ public class Date implements Comparable<Date> {
         return ziDiff;
     }
 
-    public boolean equals(Date other) {
-        return this.an == other.an && this.luna == other.luna && this.zi == other.zi;
-    }
-
     @Override
     public String toString() {
         return this.zi + "." + this.luna + "." + this.an;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Date date = (Date) o;
+        return zi == date.zi &&
+                luna == date.luna &&
+                an == date.an;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(zi, luna, an);
     }
 }
