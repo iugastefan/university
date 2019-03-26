@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.*;
 
 final public class Services {
-    // TODO: de facut o clasa Date personala
     private Map<Date, List<Valuta>> istoric;
     private List<Valuta> actual;
     private List<Casier> casieri;
@@ -43,24 +42,26 @@ final public class Services {
 
     public void getValutaLaData(Date date, String nume) throws Exception {
         List<Valuta> lista = istoric.get(date);
-        if (lista == null)
+        if (lista == null) {
             throw new Exception("Data " + date + " nu exista in istoric");
-        for (Valuta x : lista) {
-            if (x.getNume().equals(nume) || x.getPrescurtare().equals(nume))
-                System.out.println(x);
         }
-        throw new Exception("Valuta" + nume + " nu exista la data " + date);
+        boolean ex = false;
+        for (Valuta x : lista) {
+            if (x.getNume().equals(nume) || x.getPrescurtare().equals(nume)) {
+                System.out.println(x);
+                ex = true;
+            }
+        }
+        if (!ex)
+            throw new Exception("Valuta" + nume + " nu exista la data " + date);
     }
 
     public void printIstoric() {
-        Iterator it = istoric.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry x = (Map.Entry) it.next();
-            System.out.println(x.getKey() + ": ");
-            for (Valuta y : (List<Valuta>) x.getValue()) {
+        for (Map.Entry<Date, List<Valuta>> dateListEntry : istoric.entrySet()) {
+            System.out.println(dateListEntry.getKey() + ": ");
+            for (Valuta y : dateListEntry.getValue()) {
                 System.out.println("\t" + y.getNume() + " " + y.getCurs());
             }
-            it.remove();
         }
     }
 
