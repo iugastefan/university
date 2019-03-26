@@ -1,7 +1,7 @@
 package schimb_valutar;
 
 class Casier extends Persoana {
-    int id;
+    private int id;
 
     public Casier(String nume, String prenume, int id) {
         this.nume = nume;
