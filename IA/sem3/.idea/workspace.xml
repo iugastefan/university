@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eb12cf62-9caa-43a9-9784-ed8b3c59a056" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../lab2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sem2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sem2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/CardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/CardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/exceptions/NotEnoughMoneyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/aplicatie/exceptions/NotEnoughMoneyException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu10.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu10.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu6.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu7.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu8.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu9.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab2/src/exemplu/Exemplu9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab22/src/Exemplu1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Bicycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Bicycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Tricycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu1/Tricycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/DebitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/DebitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Bar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Bar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Foo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu3/Foo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu6/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu6/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu6/RevolutCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/exemplu6/RevolutCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/main/Exemplu2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/main/Exemplu2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab3/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab3/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Cerc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Cerc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Forma.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Forma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Matematician.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Matematician.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Patrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu1/Patrat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Bucatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Bucatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Cutit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Cutit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/InstrumentDeTaiat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/InstrumentDeTaiat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Insurubator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Insurubator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Mecanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Mecanic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Surubelnita.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/Surubelnita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/TaietorSiInsurubator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu2/TaietorSiInsurubator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu4/Exemplu4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu4/Exemplu4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu5/exemlpu5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/exemplu5/exemlpu5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/lab4/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/lab4/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/pizzerie/src/model/Blat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/pizzerie/src/model/Blat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/pizzerie/src/model/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/pizzerie/src/model/Pizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PAO/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PAO/project/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="sem3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sem3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb12cf62-9caa-43a9-9784-ed8b3c59a056" name="Default Changelist" comment="" />
+      <created>1554210800963</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554210800963</updated>
+      <workItem from="1554210802330" duration="5094000" />
+      <workItem from="1555418360419" duration="274000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5368000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14285715" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32917964" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49946696" weight="0.32917964" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49380806" weight="0.32995737" />
+      <window_info anchor="right" x="0" y="0" width="434" height="896" id="Documentation" order="4" sideWeight="0.50619197" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.498452" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -127,5 +127,5 @@ print(dictionar2)
 for x in dictionar2.copy().keys():
     if x.isdigit():
         for y in dictionar2[x]:
-            print(x,y)
-        dictionar2.pop(x,None)
+            print(x, y)
+        dictionar2.pop(x, None)
