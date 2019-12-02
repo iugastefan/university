@@ -30,14 +30,19 @@ CREATE TABLE EXCURSIE_IUGA
 /
 DECLARE
     TYPE EXCURSIE IS TABLE OF EXCURSIE_IUGA%ROWTYPE;
-    V_EXCURSIE EXCURSIE;
-    V_ORASE    EXCURSIE_IUGA.ORASE%TYPE;
-    V_POZ1     NUMBER(2) := -1;
-    V_POZ2     NUMBER(2) := -1;
+    TYPE V_CODURI IS VARRAY (1) OF NUMBER(4);
+    CURSOR V_CURSOR_ORASE IS SELECT ORASE FROM EXCURSIE_IUGA FOR UPDATE;
+    V_EXCURSIE        EXCURSIE;
+    V_ORASE           EXCURSIE_IUGA.ORASE%TYPE;
+    V_POZ1            NUMBER(2) := -1;
+    V_POZ2            NUMBER(2) := -1;
+    V_TEMPORAS        VARCHAR2(20);
+    V_MIN_COUNT_ORASE NUMBER(2) := 99;
 BEGIN
+    -- a
     INSERT INTO EXCURSIE_IUGA
     VALUES
-        (1, 'Excursie1', TIP_ORASE_IUGA('Oras1'), 'Disponibil');
+        (1, 'Excursie1', TIP_ORASE_IUGA('Oras1', 'Oras2'), 'Disponibil');
     INSERT INTO EXCURSIE_IUGA
     VALUES
         (2, 'Excursie2', TIP_ORASE_IUGA('Oras1'), 'Disponibil');
@@ -52,47 +57,97 @@ BEGIN
         (5, 'Excursie5', TIP_ORASE_IUGA('Oras1'), 'Disponibil');
     COMMIT;
 
+    -- b
     SELECT ORASE
       INTO V_ORASE
       FROM EXCURSIE_IUGA
      WHERE
          COD_EXCURSIE = 3;
 
-
-    -- a
+    -- b.1
     V_ORASE.EXTEND;
     V_ORASE(V_ORASE.LAST) := 'OrasNouA';
 
-    -- b
+    -- b.2
     V_ORASE.EXTEND;
     FOR I IN REVERSE V_ORASE.FIRST + 1 .. V_ORASE.LAST LOOP
         V_ORASE(I) := V_ORASE(I - 1);
-        DBMS_OUTPUT.PUT_LINE(I);
     END LOOP;
     V_ORASE(2) := 'OrasNouB';
 
-    -- c
+    -- b.3
     FOR I IN V_ORASE.FIRST .. V_ORASE.LAST LOOP
-        IF V_ORASE(I) = 'OrasNouA' THEN
+        IF V_ORASE(I) = 'Oras1' THEN
             V_POZ1 := I;
         END IF;
-        IF V_ORASE(I) = 'OrasNouB' THEN
+        IF V_ORASE(I) = 'OrasNouA' THEN
             V_POZ2 := I;
         END IF;
+        IF V_POZ1 <> -1 AND V_POZ2 <> -1 THEN
+            EXIT;
+        END IF;
     END LOOP;
+    V_TEMPORAS := V_ORASE(V_POZ1);
+    V_ORASE(V_POZ1) := V_ORASE(V_POZ2);
+    V_ORASE(V_POZ2) := V_TEMPORAS;
+
+    V_POZ1 := -1;
+    FOR I IN V_ORASE.FIRST .. V_ORASE.LAST LOOP
+        IF V_ORASE(I) = 'OrasNouB' THEN
+            V_POZ1 := I;
+            EXIT;
+        END IF;
+    END LOOP;
+    FOR I IN V_POZ1 .. V_ORASE.LAST - 1 LOOP
+        V_ORASE(I) := V_ORASE(I + 1);
+    END LOOP;
+    V_ORASE.TRIM;
 
 
-    FOR I IN V_ORASE.FIRST..V_ORASE.LAST LOOP
-        DBMS_OUTPUT.PUT_LINE(V_ORASE(I));
-    END LOOP;
     UPDATE EXCURSIE_IUGA
        SET ORASE =V_ORASE
      WHERE
          COD_EXCURSIE = 3;
 
+    -- c
+    SELECT ORASE
+      INTO V_ORASE
+      FROM EXCURSIE_IUGA
+     WHERE
+         COD_EXCURSIE = 3;
+    DBMS_OUTPUT.PUT_LINE('Nr orase: ' || V_ORASE.COUNT);
+    DBMS_OUTPUT.PUT('Orase: ');
+    FOR I IN V_ORASE.FIRST..V_ORASE.LAST LOOP
+        DBMS_OUTPUT.PUT(V_ORASE(I) || ' ');
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('');
+
+
+    -- e
+    OPEN V_CURSOR_ORASE;
+    LOOP
+        FETCH V_CURSOR_ORASE INTO V_ORASE;
+        EXIT WHEN V_CURSOR_ORASE%NOTFOUND;
+        IF V_ORASE.COUNT < V_MIN_COUNT_ORASE THEN
+            V_MIN_COUNT_ORASE := V_ORASE.COUNT;
+        END IF;
+    END LOOP;
+    CLOSE V_CURSOR_ORASE;
+
+    OPEN V_CURSOR_ORASE;
+    LOOP
+        FETCH V_CURSOR_ORASE INTO V_ORASE;
+        EXIT WHEN V_CURSOR_ORASE%NOTFOUND;
+        IF V_ORASE.COUNT = V_MIN_COUNT_ORASE THEN
+            UPDATE EXCURSIE_IUGA SET STATUS='Anulata' WHERE CURRENT OF V_CURSOR_ORASE;
+        END IF;
+    END LOOP;
+    CLOSE V_CURSOR_ORASE;
+
+
+    -- d
     DELETE FROM EXCURSIE_IUGA RETURNING COD_EXCURSIE,DENUMIRE,ORASE,STATUS BULK COLLECT INTO V_EXCURSIE;
     FOR I IN V_EXCURSIE.FIRST..V_EXCURSIE.LAST LOOP
-        DBMS_OUTPUT.PUT(V_EXCURSIE(I).COD_EXCURSIE || ' ');
         DBMS_OUTPUT.PUT(V_EXCURSIE(I).DENUMIRE || ' ');
         FOR J IN V_EXCURSIE(I).ORASE.FIRST..V_EXCURSIE(I).ORASE.LAST LOOP
             DBMS_OUTPUT.PUT(V_EXCURSIE(I).ORASE(J) || ' ');
@@ -105,7 +160,7 @@ EXCEPTION
     WHEN
         OTHERS THEN
         DBMS_OUTPUT.PUT_LINE(SQLERRM);
-        DELETE FROM EXCURSIE_IUGA;
+        DELETE FROM EXCURSIE_IUGA WHERE 1 = 1;
         COMMIT;
-END;
+END ;
 /
