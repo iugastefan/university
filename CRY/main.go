@@ -41,9 +41,11 @@ func calcHash(headerPrefix []byte, nonce uint32) string {
 	hash := sha256.Sum256(has1[:])
 	return hex.EncodeToString(hash[:])
 }
-func work(workerId, minNonce, maxNonce, workers uint32, headerPrefix, targetStr []byte, resp chan response) {
-	for nonce := minNonce + workerId; nonce < maxNonce-workers; nonce += workers {
-		header := append(headerPrefix, bin(nonce)...)
+func work(workerID, minNonce, maxNonce, workers uint32, headerPrefix, targetStr []byte, resp chan response) {
+	tempHeader := make([]byte, len(headerPrefix))
+	for nonce := minNonce + workerID; nonce < maxNonce-workers; nonce += workers {
+		copy(tempHeader, headerPrefix)
+		header := append(tempHeader, bin(nonce)...)
 		has1 := sha256.Sum256(header)
 		hash := sha256.Sum256(has1[:])
 		if bytes.Compare(reverse(hash[:]), targetStr) == -1 {
@@ -54,16 +56,13 @@ func work(workerId, minNonce, maxNonce, workers uint32, headerPrefix, targetStr 
 			return
 		}
 	}
-	resp <- response{
-		nonce: 0,
-		hash:  "",
-	}
+	resp <- response{}
 }
 func caz1(headerPrefix, targetStr []byte) uint32 {
 	var minNonce uint32 = 3_000_000_000
 	var maxNonce uint32 = 3_100_000_000
 	var workers uint32 = 8
-	resp := make(chan response, workers)
+	resp := make(chan response)
 	for i := uint32(0); i < workers; i++ {
 		go work(i, minNonce, maxNonce, workers, headerPrefix, targetStr, resp)
 	}
@@ -85,11 +84,11 @@ func caz2(headerPrefix, targetStr []byte, nonce1 uint32) {
 	}
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
+	var maxNonce uint32 = math.MaxUint32
 	var minNonce uint32 = r1.Uint32()*(math.MaxUint32-nonce1) + nonce1
-	for minNonce < nonce1 {
+	for minNonce < nonce1 || (maxNonce-minNonce) < 100_000_000 {
 		minNonce = r1.Uint32()*(math.MaxUint32-nonce1) + nonce1
 	}
-	var maxNonce uint32 = math.MaxUint32
 	var workers uint32 = 8
 	resp := make(chan response, workers)
 	for i := uint32(0); i < workers; i++ {
