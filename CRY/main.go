@@ -26,8 +26,9 @@ func bin(a uint32) []byte {
 }
 
 func checkNonce(headerPrefix, targetStr []byte, nonce uint32) bool {
-
-	header := append(headerPrefix, bin(nonce)...)
+	tempHeader := make([]byte, len(headerPrefix))
+	copy(tempHeader, headerPrefix)
+	header := append(tempHeader, bin(nonce)...)
 	has1 := sha256.Sum256(header)
 	hash := sha256.Sum256(has1[:])
 	if bytes.Compare(reverse(hash[:]), targetStr) == -1 {
@@ -36,7 +37,9 @@ func checkNonce(headerPrefix, targetStr []byte, nonce uint32) bool {
 	return false
 }
 func calcHash(headerPrefix []byte, nonce uint32) string {
-	header := append(headerPrefix, bin(nonce)...)
+	tempHeader := make([]byte, len(headerPrefix))
+	copy(tempHeader, headerPrefix)
+	header := append(tempHeader, bin(nonce)...)
 	has1 := sha256.Sum256(header)
 	hash := sha256.Sum256(has1[:])
 	return hex.EncodeToString(hash[:])
