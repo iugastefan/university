@@ -1,0 +1,98 @@
+\documentclass[]{article}
+\usepackage{enumerate}
+\usepackage{seqsplit}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\title{Examen crypto}
+\author{Iuga Stefan - 332}
+
+\begin{document}
+
+\maketitle
+\section{Subiecte netratate}
+2(b), 2(c), 2(d), 2(e), 3(d), 3(f), 4(c)
+
+\section{Rezolvari}
+\begin{enumerate}
+\item
+	\begin{enumerate}
+		\item 
+			Cheia $K$ este o cheie random si cel putin la fel de lunga ca mesajul transmis.
+		\item
+			Daca mesajul si cheia sunt identice, operatia XOR intoarce un mesaj compus doar din 0-uri. Mesajul nu poate fi descifrat.
+	\end{enumerate}
+\item
+	\begin{enumerate}
+		\item Mesajul criptat $c$ reprezinta concatenarea blocurilor criptate $c_1, c_2, c_3$ unde $c_i = F_k(m_i \oplus (ctr+i)), i \in \{1,2,3\} $
+	\end{enumerate}
+\item
+	\begin{enumerate}
+		\item Securitatea parolelor depinde de salt-ul folosit. Daca salt-ul este unul lung, diferit pentru fiecare client si stocat alt undeva decat parola, atunci metoda poate fi sigura. 
+		MD5 nu este recomandat, in general, pentru stocarea parolelor deoarece este un algoritm foarte rapid iar metoda brute-force este eficienta pentru aflarea acestora.
+		
+		\item $G(x) = x^2 \mod x \Rightarrow G(x) = 0  \forall  x$ \\
+		Cum $G(x)$ este 0 tot timpul, el nu este random.
+		
+		\item Criptarea fluida presupune generarea unei secvente de biti folosind $G$ iar apoi XOR-area mesajului cu aceasta secventa.
+		\[c = m \oplus G(x) = m \oplus (x^2 \mod x) = m \oplus 0 = m\]
+		Cum $G$ e tot timpul 0, mesajul criptat $c$ va fi chiar mesajul in clar $m$.
+		
+		\addtocounter{enumii}{1}
+		\item Protocolul este vulnerabil unui atac Man-in-the-Middle. O solutie poate fi folosirea unor chei generate de un CA pentru semnarea mesajelor.
+		\addtocounter{enumii}{1}
+		\item Este incalcat principiul lui Kerckhoffs. Un sistem bun nu are nevoie de un NDA pentru a il tine secret, el functioneaza perfect si atunci cand algortimul este public.
+		\item Sistemul prezent incalca urmatoarele obiective:
+		\begin{enumerate}
+			\item Confidentialitatea: prin folosirea unui algoritm nerecomandat pentru pastrarea parolelor
+			\item Disponibilitatea: un atac Man-in-the-Middle poate intarzia transmisisa in timp util a datelor
+			\item Autentificarea: lipsa autentificarii permite atacul Man-in-the-Middle
+		\end{enumerate}
+	\end{enumerate}
+\item
+	\begin{enumerate}
+		\item
+		$N$ in reprezentare decimala este:
+		$\seqsplit{4371938152451122902660461215975791809483753001916739908168355461462976833703444868615518384718355588764264060739531813208377469311578324118012465910173154183806804966188707979888428392140877144558331726079378457832374697786903663087196339373421169943473228629444065911971716119514388130420831021490170432578299223459570483390623292610069168501924971423551359026067260051628963288291877508761732978077735341426523495721857662721535799339805097425181411858574451458902837841888009180430739111993640851992369629657106099405580519789364127952625159668668929543992041890621725441998315058822798569025119405224225281838296}
+		 $\\
+		 Ultimele 3 cifre ale lui $N$ formeaza numarul 296, iar acesta este divizibil cu 8, atunci si $N$ este divizibil cu 8 ($2^3$).\\
+		 Cum $N$ nu este un produs de doar 2 numere prime, el nu poate fi folosit ca parametru.
+		\item
+		Un punct ce apartine curbei eliptice are invers (curba este simetrica).
+		\begin{itemize}
+			\item Pentru punctul (8,10)
+			\begin{align*}
+			10^2 \mod 29 &= 8^3 + 17*8 +3 \mod 29  \\
+			 100 \mod 29 &= 512 + 136 +3 \mod 29  \\
+			13 \mod 29 &= 13 \mod 29 
+			\end{align*}
+			Punctul (8,10) apartine curbei $\Rightarrow$ are invers/simetric pe curba \\
+			Inversul: $-(8,10) \mod 29 = (8,-10) \mod 29 = (8,19) \mod 29$\\
+			Verificare:
+			\begin{align*}
+			19^2 \mod 29 &= 8^3 + 17*8 +3 \mod 29  \\
+			361 \mod 29 &= 512 + 136 +3 \mod 29  \\
+			13 \mod 29 &= 13 \mod 29 
+			\end{align*}
+			\item Pentru punctul (8,11)
+			\begin{align*}
+			11^2 \mod 29 &\ne 8^3 + 17*8 +3 \mod 29  \\
+			121 \mod 29 &\ne 512 + 136 +3 \mod 29  \\
+			5 \mod 29 &\ne 13 \mod 29 
+			\end{align*}
+			Punctul (8,11) nu apartine curbei
+		\end{itemize}
+	\addtocounter{enumii}{1}
+	\item 
+	 \href{https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf}{
+	 	\underline{Curba eliptica W-25519 recomandata de NIST}}
+	 \begin{align*}
+	 	y^2 &\equiv x^3 +ax+b \mod p \\
+	 	 p &= 2^{255}-19 \\
+	 	 a &= 19298681539552699237261830834781317975712544997444273427339909597334573241639236\\
+	 	 b &= 55751746669818908907645289078257140818716241103727901012315294400837956729358436
+	 \end{align*}
+	 
+	 
+	\end{enumerate}
+\end{enumerate}
+\end{document}
