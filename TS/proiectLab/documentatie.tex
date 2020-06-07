@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{lightgray},   
+	commentstyle=\color{cyan},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{black},
+	stringstyle=\color{cyan},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Proiect tehnici de simulare}
+\author{\c{S}tefan Iuga \and Iancu Petcu \and \c{S}tefan Pogonaru}
+\begin{document}
+	\maketitle
+	\section{Descrierea problemei}
+	Propunem analiza activit\u{a}\c{t}ii unei firme ce ofer\u{a} poli\c{t}e
+	de asigurare pentru echipamente electronice.
+
+	Scopul simul\u{a}rii este studierea eficien\c{t}ei de v\^{a}nzare a
+	acestei poli\c{t}e \^{i}n decursul a T de zile.
+
+	\section{Obiectivele simul\u{a}rii}
+	\begin{enumerate}
+		\item Estimarea probabilit\u{a}\c{t}ii ca firma s\u{a} nu fie
+			ruinat\u{a} p\^{a}n\u{a} la momementul T.
+		\item Estimarea unui capital minim necesar ca probabilitatea
+			estimata de ruin\u{a} p\^{a}n\u{a} la momentul T s\u{a}
+			fie mai mic\u{a} de 80\%.
+	\end{enumerate}
+
+	\section{Conven\c{t}ii}
+	\begin{itemize}
+		\item  Pornim cu un num\u{a}r ini\c{t}ial de $n_0$
+			clien\c{t}i \c{s}i un capital $a_0$.
+		\item Clien\c{t}ii fac cereri de desp\u{a}gubire conform unui
+			proces Poisson omogen de rat\u{a}
+			$\lambda$.
+		\item Valoarea fiec\u{a}rei desp\u{a}gubiri solicitate este o
+			variabil\u{a} aleatoare cu func\c{t}ia de 
+			reparti\c{t}ie $F$.
+		\item Poten\c{t}ialii noi clien\c{t}i ai firmei semneaz\u{a}
+			contracte de asigurare conform unui proces Poisson
+			omogen de rat\u{a} $\nu$.
+		\item Actualii clien\c{t}i ai firmei r\u{a}m\^{a}n fideli
+			firmei pentru un timp aleator ce corespunde
+			reparti\c{t}iei exponen\c{t}iale de parametru
+			$\mu$.
+		\item To\c{t}i clien\c{t}ii firmei pl\u{a}tesc o sum\u{a} fix\u{a}
+			$c$ per unitate de timp.
+	\end{itemize}
+	\section{Datele problemei}
+	\begin{itemize}
+		\item $\lambda=8/zi$
+		\item $F(x) =
+			\begin{cases}
+				0 & x<0\\
+				\frac{x^2+x}{2} & x \in [0,1) \\
+				1 & x\geq1
+			\end{cases}
+			$
+		\item $\nu = 18/zi$
+		\item $\mu = 0.2 (zile)$
+		\item $c = 2 $\euro$/zi$
+		\item $T = 365 zile$
+		\item $a_0 = 50000$\euro
+		\item $n_0=12$
+	\end{itemize}
+	\section{Cod sursa}
+	\lstinputlisting[language=R]{ts.R}
+	
+	\section{Rezultate}
+	Am ob\c{t}inut o probabilitate 0 de faliment cu capitalul ini\c{t}ial $50000$\euro.
+	
+	Capitalul necesar pentru ca rata de faliment s\u{a} fie mai mic\u{a} de 80\% este $42500$\euro.
+\end{document}
+
